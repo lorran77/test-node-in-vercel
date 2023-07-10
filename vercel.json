@@ -1,7 +1,7 @@
 {
   "functions": {
     "src/index.html": {
-      "memory": 3000,
+      "memory": 1024,
       "includeFiles": "db.json"
     }
   },
