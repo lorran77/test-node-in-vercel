@@ -18,9 +18,27 @@
     <title>Blog Javascript</title>
   </head>
   <body>
-    <header class="header-container container-fluid">
+
+    <!-- COMEÇO DO TOPO -->
+    <div id="topo">
+      <div class="logo">
+          <h2>Sweeties and Dreams</h2>
+      </div>
+      <nav>
+          <ul>
+            <a href="index.html"> <li>Home</li></a>
+            <a href="contato.html"><li>Contato </li></a>
+            <a href="blog.html"><li>Blog </li></a>
+            <a href="sobrenos.html"><li>Sobre nós</li></a>
+
+          </ul>
+      </nav>         
+  </div>
+  <!-- fIM DO TOPO -->
+
+    <!-- <header class="header-container container-fluid">
       <span class="header-title"> Sweeties and Dreams - Blog</span>
-    </header>
+    </header> -->
 
     <main class="container conteudo">
       <h1 class="text-center mt-4 blog-title-header">Adicionar Posts</h1>
@@ -31,18 +49,18 @@
             class="form-control add-post-title"
             type="text"
             name="title"
-            placeholder="Titulo"
+            placeholder="Titulo do artigo"
           />
           <textarea
             class="form-control add-post-body"
             name="body"
-            placeholder="Corpo"
+            placeholder="Desenvolvimento"
           ></textarea>
           <input
             class="form-control add-post-title"
             type="text"
             name="image"
-            placeholder="URL da Imagem"
+            placeholder="URL da Imagem (Não obrigatorio)"
           />
           <div class="text-center">
             <button
@@ -62,10 +80,59 @@
       </section>
     </main>
 
-    <footer class="footer-container container-fluid">
-      <!-- <span class="footer-title"> Copyright ® Matheus Vicente</span>
-      <span class="footer-title"> Nenhum direito reservado</span> -->
-    </footer>
+    <!-- <footer class="footer-container container-fluid">
+      <span class="footer-title"> Copyright ® Matheus Vicente</span>
+      <span class="footer-title"> Nenhum direito reservado</span>
+    </footer> -->
+
+    <!-- Começo do footer -->
+
+<footer>
+  <section class="logo_rodape">
+      <img src="imagens/Gold_Luxury_Initial_Circle_Logo__1_-removebg-preview 2.png" alt="">
+  </section>
+  <section id="rodape">
+      <ul id="lista_rodape">
+          <li>Delivery</li>
+          <li>Contato</li>
+          <li>Blog</li>
+      </ul>
+      <section id="Pagamentos">
+         <div id="caixa">
+          <h1>Formas de Pagamentos</h1>
+         </div>
+          <div class="icones_pagamentos1">
+              <img src="img/image 1.png" alt="">
+          </div>
+          <div class="icones_pagamentos2">
+                <img src="img/image 2.png" alt="">
+          </div>
+
+          <div class="icones_pagamentos3">
+              <img src="img/image 3.png" alt="">
+          </div>
+
+          <div class="icones_pagamentos4">
+              <img src="img/image 4.png" alt="">
+
+          </div>
+
+      </section>
+
+      <section id="Endereço">
+          <ul class="lista_endereço">
+              <li>Nosso endereço</li>
+              <li>Rua dos Paratis-2409 </li>
+              <li>Shopping San Francisco</li>
+          </ul>
+      </section>
+
+  </section>
+
+ 
+</footer>
+
+<!-- Fim do footer -->
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
