@@ -127,7 +127,7 @@ main {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  
+
 }
 
 
@@ -164,7 +164,7 @@ main {
 {
   transition: 1.5s;
   background-color: #FAEBDA;
-  border: 2px 2px 2px 2px;
+  border: 1px 1px 1px 1px;
   border-color: black black black black;
   box-shadow: none;
 }
@@ -172,7 +172,7 @@ main {
 {
   transition: 1.5s;
   background-color: #FAEBDA;
-  border: 2px 2px 2px 2px;
+  border: 1px 1px 1px 1px;
   border-color: black black black black;
   box-shadow: none;
   
