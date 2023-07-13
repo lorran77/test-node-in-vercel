@@ -165,16 +165,18 @@ main {
   transition: 1.5s;
   background-color: #FAEBDA;
   border: 1px 1px 1px 1px;
-  border-color: black black black black;
+  border-color: black #FAEBDA black #FAEBDA;
   box-shadow: none;
+  border-radius: 0;
 }
 .add-post-body:focus
 {
   transition: 1.5s;
   background-color: #FAEBDA;
   border: 1px 1px 1px 1px;
-  border-color: black black black black;
+  border-color: black #FAEBDA black #FAEBDA;
   box-shadow: none;
+  border-radius: 0;
   
 }
 
@@ -185,14 +187,13 @@ main {
   width: 150px;
   border-radius: 15px;
   color: black;
-    transition: 0.4s;
+    transition: 0.8s;
     cursor: pointer;
     border: 2px;
     background: linear-gradient(120deg, #FFB5A7, #FAEBDA);
     box-shadow: 0px 8px 10px rgba(0, 0, 0, .5);
 
     font-size: 25px;
-    
 }
 
 .blog-post-container {
