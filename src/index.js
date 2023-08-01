@@ -65,9 +65,17 @@ function EnviarPost(dadosDoFormulario) {
     .then(() => ObterPosts())
     .catch(e => console.log(e));
 }
+//   fetch(`https://api-crud-server-ok.vercel.app/produtos`, {
+//         method: "POST",
+//         headers: {
+//           "Content-type": "application/json",
+//         },
+//         body: JSON.stringify(dadosDoFormulario),
+//       }).then(() => ObterPosts());
+// }
 
 function DeletarPost(elemento) {
   const post = elemento.parentNode.parentNode.parentNode;
   const id = post.dataset.postId;
-  delete(`https://api-blog-confeitaria.vercel.app/posts/${id}`).then(() => ObterPosts());
+  fetch.delete(`http://localhost:3000/posts/${id}`).then(() => ObterPosts());
 }
