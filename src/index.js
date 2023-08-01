@@ -18,9 +18,19 @@ function PostTemplate(titulo, corpo, imagem, id) {
 }
 
 function ObterPosts() {
+
+  fetch("https://api-blog-confeitaria.vercel.app/posts", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+  })
+  .then((resposta) => resposta.json())
+    .then((resposta) => {
+  
   const secaoblog = document.querySelector("section.blog-container"); // Seleciona o elemento do DOM
 
-  axios.get("http://localhost:3000/posts").then(resposta => {
+  // axios.get("http://localhost:3000/posts").then(resposta => {
     const ListaDePosts = resposta.data.map(post =>
       PostTemplate(post.title, post.body, post.image, post.id)
     ); // Faz uma Array com os posts no formato do template
@@ -45,9 +55,13 @@ formulario.addEventListener("submit", event => {
   EnviarPost(dadosDoFormulario); // Chama a função que vai realizar a requisição
 });
 
+
+
+
+
 function EnviarPost(dadosDoFormulario) {
-  axios
-    .post("http://localhost:3000/posts", dadosDoFormulario)
+  fetch
+    .post("https://api-blog-confeitaria.vercel.app/posts", dadosDoFormulario)
     .then(() => ObterPosts())
     .catch(e => console.log(e));
 }
@@ -55,5 +69,5 @@ function EnviarPost(dadosDoFormulario) {
 function DeletarPost(elemento) {
   const post = elemento.parentNode.parentNode.parentNode;
   const id = post.dataset.postId;
-  axios.delete(`http://localhost:3000/posts/${id}`).then(() => ObterPosts());
+  delete(`https://api-blog-confeitaria.vercel.app/posts/${id}`).then(() => ObterPosts());
 }
