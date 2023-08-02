@@ -65,20 +65,43 @@ formulario.addEventListener("submit", event => {
 
 
 
-function EnviarPost(dadosDoFormulario) {
-  fetch
-    .post("https://api-blog-confeitaria.vercel.app/posts", dadosDoFormulario)
-    .then(() => ObterPosts())
-    .catch(e => console.log(e));
+function EnviarPost() {
+  // fetch
+  //   .post("https://api-blog-confeitaria.vercel.app/posts", dadosDoFormulario)
+  //   .then(() => ObterPosts())
+  //   .catch(e => console.log(e));
+
+  const tituloPost = (document.querySelector("id").value);
+  const corpoPost = document.querySelector("#nome").value;
+  const imagemPost = parseInt(document.querySelector("#preco").value);
+
+  //PASSO 2: criando um objeto produto
+  let postInserido = {
+    titulo: tituloPost,
+    corpo: corpoPost,
+    imagem: imagemPost,
+  };   
+
+  //passo 4: inserindo o objeto PRODUTO na API
+  fetch(`https://api-blog-confeitaria.vercel.app/posts`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(postInserido),
+  }).then((response) => {
+    limpaTabela();
+    getprodutos();
+
+    //mensagem de alteração salva e escondo a div
+    div = document.getElementById("div-cadastrar");
+    div.classList.remove("div-cadastrar-ativo");
+    div.classList.add("div-cadastrar-inativo");
+    alert("PRODUTO CADASTRADO COM SUCESSO");
+  // });
+});
 }
-//   fetch(`https://api-crud-server-ok.vercel.app/produtos`, {
-//         method: "POST",
-//         headers: {
-//           "Content-type": "application/json",
-//         },
-//         body: JSON.stringify(dadosDoFormulario),
-//       }).then(() => ObterPosts());
-// }
+
 
 function DeletarPost(elemento) {
   const post = elemento.parentNode.parentNode.parentNode;
