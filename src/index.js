@@ -1,10 +1,11 @@
 window.onload = () => ObterPosts();
 
-function PostTemplate(titulo, corpo, imagem, id) {
+function PostTemplate(titulo, corpo, imagem, id)
+{
   return `<article class="blog-post-container" data-post-id="${id}">
         <div class="row">
           <div class="blog-post-image col-3">
-            <img src="${imagem || "https://bit.ly/2So2zvB"}" alt="Erro"></img>
+            <img src=${imagem} || "https://bit.ly/2So2zvB"  alt="Erro"></img>
           </div>
           <div class="col-7">
             <div class="blog-post-title">${titulo}</div>
@@ -25,22 +26,27 @@ function ObterPosts() {
       "Content-type": "application/json",
     },
   })
-  .then((resposta) => resposta.json())
+    .then((resposta) => resposta.json())
     .then((resposta) => {
-  
-  const secaoblog = document.querySelector("section.blog-container"); // Seleciona o elemento do DOM
 
-  // axios.get("http://localhost:3000/posts").then(resposta => {
-    const ListaDePosts = resposta.data.map(post =>
-      PostTemplate(post.title, post.body, post.image, post.id)
-    ); // Faz uma Array com os posts no formato do template
-    let PostsJuntos = ListaDePosts.reverse().join(); // Junta todos os posts em uma string só
-    if (ListaDePosts.length == 0)
-      PostsJuntos = `<div class="alert alert-info" role="alert">
+      // console.log(resposta);
+
+      const secaoblog = document.querySelector("section.blog-container"); // Seleciona o elemento do DOM
+
+      // axios.get("http://localhost:3000/posts").then(resposta => {
+      let ListaDePosts = resposta.map(post =>
+        PostTemplate(post.title, post.body, post.image, post.id)
+      ); // Faz uma Array com os posts no formato do template
+      console.log(ListaDePosts);
+
+      let PostsJuntos = ListaDePosts.reverse().join(); // Junta todos os posts em uma string só
+      if (ListaDePosts.length == 0) {
+        PostsJuntos = `<div class="alert alert-info" role="alert">
       Nenhum post! Crie um novo!
-    </div>`;
-    secaoblog.innerHTML = PostsJuntos; // Insere a string dentro da seção dos posts
-  });
+    </div>`;}
+        secaoblog.innerHTML = PostsJuntos;
+      // Insere a string dentro da seção dos posts
+    });
 }
 
 const formulario = document.querySelector("form");
