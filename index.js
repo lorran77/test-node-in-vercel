@@ -71,40 +71,53 @@ function EnviarPost() {
   //   .then(() => ObterPosts())
   //   .catch(e => console.log(e));
 
-  const tituloPost = (document.querySelector("id").value);
-  const corpoPost = document.querySelector("#nome").value;
-  const imagemPost = parseInt(document.querySelector("#preco").value);
 
-  //PASSO 2: criando um objeto produto
-  let postInserido = {
-    titulo: tituloPost,
-    corpo: corpoPost,
-    imagem: imagemPost,
-  };   
 
-  //passo 4: inserindo o objeto PRODUTO na API
+const formulario = document.querySelector("form");
+
+formulario.addEventListener("submit", event => {
+  event.preventDefault(); //Previne a atualização da pagina após enviar o formulário
+  const dadosDoFormulario = {
+    title: formulario.children.title.value,
+    body: formulario.children.body.value,
+    image: formulario.children.image.value
+  }; // Pega os dados do formulário
   fetch(`https://api-blog-confeitaria.vercel.app/posts`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify(postInserido),
-  }).then((response) => {
-    limpaTabela();
-    getprodutos();
-
-    //mensagem de alteração salva e escondo a div
-    div = document.getElementById("div-cadastrar");
-    div.classList.remove("div-cadastrar-ativo");
-    div.classList.add("div-cadastrar-inativo");
-    alert("PRODUTO CADASTRADO COM SUCESSO");
-  // });
+    body: JSON.stringify(dadosDoFormulario),
+  }).then((resposta) => {
+    ObterPosts();
+    alert("Post enviado com sucesso!!!");
+}); // Chama a função que vai realizar a requisição
 });
+
+
 }
 
 
 function DeletarPost(elemento) {
   const post = elemento.parentNode.parentNode.parentNode;
-  const id = post.dataset.postId;
-  fetch.delete(`http://localhost:3000/posts/${id}`).then(() => ObterPosts());
+  // const id = post.dataset.postId;
+  // fetch.delete(`http://localhost:3000/posts/${id}`).then(() => ObterPosts());
+
+  let textConfirmacao = `CONFIRMA A EXCLUSÃO DO REGISTRO? 
+                        ESTA AÇÃO NÃO PODE SER DESFEITA`;
+
+  if (confirm(textConfirmacao) == true) {
+    fetch(
+      `https://api-blog-confeitaria.vercel.app/posts/${elemento}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    ).then((resposta) => {
+      ObterPosts();
+      alert("Post apagado.");
+    });
+  }
 }
