@@ -16,9 +16,7 @@ function PostTemplate(titulo, corpo, imagem, id) {
             <div class="blog-post-body">${corpo}</div>
           </div>
 
-          <div class="col-2 d-flex align-items-center">
-            <a style="color:white" class="btn btn-danger m-auto" onclick="DeletarPost(this)">X</a>
-          </div>
+          
 
         </div>
       </article>`;
