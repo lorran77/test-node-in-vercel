@@ -29,7 +29,6 @@ body{
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-
 }
 
 
@@ -106,6 +105,17 @@ body{
   margin-bottom: 1em;
   background: linear-gradient(120deg, #FAEBDA, #fddcd5);
   border-radius: 15px;
+  display: flex;
+}
+
+.row
+{
+  
+}
+
+.col-7
+{
+  background-color: aqua;
 }
 
 .blog-post-title {
@@ -117,13 +127,16 @@ body{
 }
 
 .blog-post-body {
-  padding: 1em;
+  /* padding: 1em; */
+  background-color: #ccc;
+  margin-top: 50px;
 }
 
 .blog-post-image {
   height: 100%;
   width: 100;
 }
+
 .blog-post-image img {
   width: 100%;
   height: 100%;

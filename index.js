@@ -1,19 +1,25 @@
 window.onload = () => ObterPosts();
 
-function PostTemplate(titulo, corpo, imagem, id)
-{
+function PostTemplate(titulo, corpo, imagem, id) {
   return `<article class="blog-post-container" data-post-id="${id}">
         <div class="row">
-          <div class="blog-post-image col-3">
-            <img src=${imagem} || "https://bit.ly/2So2zvB"  alt="Erro"></img>
-          </div>
-          <div class="col-7">
+
+          <div class="div-titulo-post">
             <div class="blog-post-title">${titulo}</div>
+          </div>
+
+          <div class="blog-post-image">
+            <img src=${imagem} || https://bit.ly/2So2zvB  alt="Erro"></img>
+          </div>
+
+          <div class="div-corpo-post">
             <div class="blog-post-body">${corpo}</div>
           </div>
+
           <div class="col-2 d-flex align-items-center">
             <a style="color:white" class="btn btn-danger m-auto" onclick="DeletarPost(this)">X</a>
           </div>
+
         </div>
       </article>`;
 }
@@ -43,8 +49,9 @@ function ObterPosts() {
       if (ListaDePosts.length == 0) {
         PostsJuntos = `<div class="alert alert-info" role="alert">
       Nenhum post! Crie um novo!
-    </div>`;}
-        secaoblog.innerHTML = PostsJuntos;
+    </div>`;
+      }
+      secaoblog.innerHTML = PostsJuntos;
       // Insere a string dentro da seção dos posts
     });
 }
@@ -73,26 +80,26 @@ function EnviarPost() {
 
 
 
-const formulario = document.querySelector("form");
+  const formulario = document.querySelector("form");
 
-formulario.addEventListener("submit", event => {
-  event.preventDefault(); //Previne a atualização da pagina após enviar o formulário
-  const dadosDoFormulario = {
-    title: formulario.children.title.value,
-    body: formulario.children.body.value,
-    image: formulario.children.image.value
-  }; // Pega os dados do formulário
-  fetch(`https://api-blog-confeitaria.vercel.app/posts`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(dadosDoFormulario),
-  }).then((resposta) => {
-    ObterPosts();
-    alert("Post enviado com sucesso!!!");
-}); // Chama a função que vai realizar a requisição
-});
+  formulario.addEventListener("submit", event => {
+    event.preventDefault(); //Previne a atualização da pagina após enviar o formulário
+    const dadosDoFormulario = {
+      title: formulario.children.title.value,
+      body: formulario.children.body.value,
+      image: formulario.children.image.value
+    }; // Pega os dados do formulário
+    fetch(`https://api-blog-confeitaria.vercel.app/posts`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(dadosDoFormulario),
+    }).then((resposta) => {
+      ObterPosts();
+      alert("Post enviado com sucesso!!!");
+    }); // Chama a função que vai realizar a requisição
+  });
 
 
 }
